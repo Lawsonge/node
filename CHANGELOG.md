@@ -1,5 +1,49 @@
 # Node.js ChangeLog
 
+## 2016-01-11, Version 5.4.1 (Stable), @TheAlphaNerd
+
+### Notable Changes
+
+* Minor performance improvements:
+  - **lib**: Use arrow functions instead of bind where possible (Minwoo Jung) [#3622](https://github.com/nodejs/node/pull/3622).
+    - (Mistakenly missing from v5.4.0)
+  - **module**: move unnecessary work for early return (Andres Suarez) [#3579](https://github.com/nodejs/node/pull/3579)
+* Various doc fixes
+* Various test improvements
+
+### Known issues
+
+* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* Unicode characters in filesystem paths are not handled consistently across platforms or Node.js APIs. See [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) and [#3519](https://github.com/nodejs/node/issues/3519).
+
+### commits
+
+* [[`58f9344a78`](https://github.com/nodejs/node/commit/58f9344a78)] - **cluster**: ignore queryServer msgs on disconnection (Santiago Gimeno) [#4465](https://github.com/nodejs/node/pull/4465)
+* [[`5341b5f229`](https://github.com/nodejs/node/commit/5341b5f229)] - **doc**: adds usage of readline line-by-line parsing (Robert Jefe Lindstaedt) [#4609](https://github.com/nodejs/node/pull/4609)
+* [[`8edb41d19d`](https://github.com/nodejs/node/commit/8edb41d19d)] - **doc**: remove "above" and "below" references (Richard Sun) [#4499](https://github.com/nodejs/node/pull/4499)
+* [[`68e24da840`](https://github.com/nodejs/node/commit/68e24da840)] - **doc**: update stylesheet to match frontpage (Roman Reiss) [#4621](https://github.com/nodejs/node/pull/4621)
+* [[`7ba6a711f4`](https://github.com/nodejs/node/commit/7ba6a711f4)] - **doc**: stronger suggestion for userland assert (Wyatt Preul) [#4535](https://github.com/nodejs/node/pull/4535)
+* [[`6f2e28a1b6`](https://github.com/nodejs/node/commit/6f2e28a1b6)] - **doc**: label http.IncomingMessage as a Class (Sequoia McDowell) [#4589](https://github.com/nodejs/node/pull/4589)
+* [[`749aaa7620`](https://github.com/nodejs/node/commit/749aaa7620)] - **doc**: document http's server.listen return value (Sequoia McDowell) [#4590](https://github.com/nodejs/node/pull/4590)
+* [[`ba693c44d4`](https://github.com/nodejs/node/commit/ba693c44d4)] - **doc**: fix description about the latest-codename (Minwoo Jung) [#4583](https://github.com/nodejs/node/pull/4583)
+* [[`f67f62588d`](https://github.com/nodejs/node/commit/f67f62588d)] - **doc**: add Evan Lucas to Release Team (Evan Lucas) [#4579](https://github.com/nodejs/node/pull/4579)
+* [[`9b527a5bed`](https://github.com/nodejs/node/commit/9b527a5bed)] - **doc**: add Myles Borins to Release Team (Myles Borins) [#4578](https://github.com/nodejs/node/pull/4578)
+* [[`6f511557fb`](https://github.com/nodejs/node/commit/6f511557fb)] - **doc**: bring releases.md up to date (cjihrig) [#4540](https://github.com/nodejs/node/pull/4540)
+* [[`adb9e176c2`](https://github.com/nodejs/node/commit/adb9e176c2)] - **doc**: add missing backtick for readline (Brian White) [#4549](https://github.com/nodejs/node/pull/4549)
+* [[`2e20b32749`](https://github.com/nodejs/node/commit/2e20b32749)] - **doc**: improvements to crypto.markdown copy (James M Snell) [#4435](https://github.com/nodejs/node/pull/4435)
+* [[`335c05e7c2`](https://github.com/nodejs/node/commit/335c05e7c2)] - **http**: remove variable redeclaration (Rich Trott) [#4612](https://github.com/nodejs/node/pull/4612)
+* [[`94e28759ac`](https://github.com/nodejs/node/commit/94e28759ac)] - **lib**: use arrow functions instead of bind (Minwoo Jung) [#3622](https://github.com/nodejs/node/pull/3622)
+* [[`9255d921ba`](https://github.com/nodejs/node/commit/9255d921ba)] - **module**: move unnecessary work for early return (Andres Suarez) [#3579](https://github.com/nodejs/node/pull/3579)
+* [[`64a9b0d1b8`](https://github.com/nodejs/node/commit/64a9b0d1b8)] - **net**: fix dns lookup for android (Josh Dague) [#4580](https://github.com/nodejs/node/pull/4580)
+* [[`98a8aa030c`](https://github.com/nodejs/node/commit/98a8aa030c)] - **net, doc**: fix line wrapping lint in net.js (James M Snell) [#4588](https://github.com/nodejs/node/pull/4588)
+* [[`468fb2f8c1`](https://github.com/nodejs/node/commit/468fb2f8c1)] - **src**: remove redeclarations of variables (Rich Trott) [#4605](https://github.com/nodejs/node/pull/4605)
+* [[`e4c173b415`](https://github.com/nodejs/node/commit/e4c173b415)] - **stream**: remove useless if test in transform (zoubin) [#4617](https://github.com/nodejs/node/pull/4617)
+* [[`1ecfd7d560`](https://github.com/nodejs/node/commit/1ecfd7d560)] - **test**: require common module only once (Rich Trott) [#4611](https://github.com/nodejs/node/pull/4611)
+* [[`d5fcdbd2c1`](https://github.com/nodejs/node/commit/d5fcdbd2c1)] - **test**: only include http module once (Rich Trott) [#4606](https://github.com/nodejs/node/pull/4606)
+* [[`36b385d3c1`](https://github.com/nodejs/node/commit/36b385d3c1)] - **test**: fix flaky unrefed timers test (Rich Trott) [#4599](https://github.com/nodejs/node/pull/4599)
+
 ## 2016-01-06, Version 5.4.0 (Stable), @Fishrock123
 
 ### Notable changes
